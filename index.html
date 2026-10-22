@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#245c4a">
+<title>Work English Coach</title>
+<style>
+:root{--green:#245c4a;--green2:#367b62;--ink:#18231f;--muted:#65716b;--paper:#f5f7f4;--card:#fff;--line:#dfe6e0;--soft:#e9f2ec;--warn:#fff4d9;--shadow:0 8px 24px #1836290d}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,textarea,input{font:inherit}button{cursor:pointer}button:focus-visible,textarea:focus-visible{outline:3px solid #8cbba5;outline-offset:2px}
+header{background:var(--green);color:white;padding:20px 18px 24px;border-radius:0 0 24px 24px}header .top{display:flex;align-items:center;gap:12px}header .logo{width:48px;height:48px;background:#ffffff20;border:1px solid #ffffff45;border-radius:15px;display:grid;place-items:center;font-size:25px}h1{font-size:22px;margin:0}header p{margin:3px 0 0;color:#d8e8df;font-size:13px}.wrap{max-width:760px;margin:auto;padding:16px 14px 38px}.progress-card,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px}.progress-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}.big{font-size:25px;font-weight:750}.bar{height:8px;background:#e8ede9;border-radius:20px;overflow:hidden;margin-top:10px}.bar span{display:block;height:100%;background:var(--green2);width:0%;transition:width .2s}.section-title{font-size:18px;margin:22px 2px 10px}.modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.module{border:1px solid var(--line);border-radius:16px;padding:14px;background:white;text-align:left;min-height:122px;color:var(--ink)}.module.active{border:2px solid var(--green);background:var(--soft);padding:13px}.module .emoji{font-size:23px}.module strong{display:block;margin:6px 0 3px}.module small{color:var(--muted);display:block}.pill{display:inline-block;border-radius:30px;background:var(--soft);color:var(--green);font-size:12px;padding:4px 8px;font-weight:700}.btn{border:0;border-radius:12px;padding:12px 15px;font-weight:700;background:var(--green);color:white}.btn.secondary{background:var(--soft);color:var(--green);border:1px solid #cbded2}.btn.ghost{background:transparent;color:var(--green);border:1px solid var(--line)}.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.scenario{background:#f7faf7;border:1px solid var(--line);border-radius:14px;padding:13px;margin:12px 0}.scenario p{margin:5px 0}.english{font-size:18px;font-weight:650}.muted{color:var(--muted);font-size:14px}.field{width:100%;min-height:105px;border:1px solid #cbd6ce;border-radius:12px;padding:12px;background:#fff;resize:vertical;color:var(--ink)}.feedback{border-radius:14px;background:#f3f7f3;border:1px solid #dce8de;padding:13px;margin-top:12px}.feedback h3{margin:0 0 8px;font-size:16px}.feedback p{margin:7px 0}.answer{padding:10px 12px;border-left:3px solid var(--green2);background:white;border-radius:0 8px 8px 0}.quiz-option{display:block;width:100%;text-align:left;border:1px solid var(--line);background:white;border-radius:12px;padding:12px;margin:8px 0}.quiz-option.selected{border-color:var(--green);background:var(--soft)}.quiz-option.correct{border-color:#2f805c;background:#e8f5ed}.quiz-option.wrong{border-color:#bd6a53;background:#fff0eb}.hidden{display:none!important}.footer{text-align:center;color:var(--muted);font-size:12px;padding:12px}.topnav{display:flex;gap:7px;overflow:auto;margin:14px 0}.navbtn{white-space:nowrap;border:1px solid var(--line);border-radius:30px;background:#fff;padding:9px 12px;color:var(--ink)}.navbtn.active{background:var(--green);color:#fff;border-color:var(--green)}.notice{background:var(--warn);border-radius:12px;padding:11px;font-size:13px;margin:10px 0}.smallbtn{padding:8px 10px;font-size:13px}.line{height:1px;background:var(--line);margin:14px 0}
+@media(min-width:600px){.modules{grid-template-columns:repeat(4,minmax(0,1fr))}.module{min-height:145px}.wrap{padding-top:20px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="logo">🎧</div><div><h1>Work English Coach</h1><p>Tu entrenador personal de inglés profesional · B1 → B2</p></div></div></header>
+<main class="wrap">
+  <section class="progress-card">
+    <div class="progress-top"><div><div class="eyebrow">Tu progreso</div><div class="big"><span id="doneCount">0</span> de <span id="totalCount">12</span> prácticas</div></div><span class="pill" id="streakLabel">Primer día</span></div>
+    <div class="bar"><span id="progressBar"></span></div>
+    <p class="muted" id="progressHint">Completá una práctica para empezar a registrar tu progreso en este dispositivo.</p>
+  </section>
+  <div class="section-title">Elegí tu área de práctica</div>
+  <section class="modules" id="modules">
+    <button class="module active" data-module="customer"><span class="emoji">🎧</span><strong>Customer Service</strong><small>Llamadas, chats y emails</small></button>
+    <button class="module" data-module="quality"><span class="emoji">📋</span><strong>Quality & KPIs</strong><small>Feedback y métricas</small></button>
+    <button class="module" data-module="leader"><span class="emoji">👥</span><strong>Team Leader</strong><small>Coaching y reuniones</small></button>
+    <button class="module" data-module="interview"><span class="emoji">💼</span><strong>Job Interviews</strong><small>Entrevistas profesionales</small></button>
+  </section>
+  <nav class="topnav" aria-label="Tipo de práctica">
+    <button class="navbtn active" data-tab="lesson">Lección</button><button class="navbtn" data-tab="quiz">Ejercicio</button><button class="navbtn" data-tab="roleplay">Simulación</button><button class="navbtn" data-tab="progress">Mi progreso</button>
+  </nav>
+  <section class="card" id="lessonView">
+    <div class="eyebrow" id="lessonCategory">CUSTOMER SERVICE · B1</div>
+    <h2 id="lessonTitle" style="margin:5px 0 8px">Mostrar empatía con un cliente</h2>
+    <p class="muted" id="lessonIntro">Una frase empática reconoce cómo se siente el cliente y prepara el camino para ayudarlo.</p>
+    <div class="scenario"><div class="eyebrow">Expresión clave</div><p class="english" id="phrase">“I completely understand your frustration.”</p><p id="translation">Entiendo perfectamente tu frustración.</p><button class="btn secondary smallbtn" id="speakPhrase">🔊 Escuchar frase</button></div>
+    <div><strong>Por qué funciona</strong><p id="explanation" class="muted">“Completely understand” suena natural y profesional. Evitá responder solamente “I understand”, que puede sonar distante en una situación tensa.</p></div>
+    <div class="scenario"><div class="eyebrow">Alternativa profesional</div><p id="alternative" class="english">“I can see why this has been frustrating, and I'll do my best to help.”</p></div>
+    <div class="btnrow"><button class="btn" id="markLesson">Marcar lección como completada ✓</button><button class="btn ghost" id="nextLesson">Siguiente lección →</button></div>
+  </section>
+  <section class="card hidden" id="quizView">
+    <div class="eyebrow">EJERCICIO RÁPIDO</div><h2 style="margin:5px 0">Elegí la respuesta más profesional</h2><p id="quizQuestion">Un cliente está enfadado por un retraso. ¿Qué le decís?</p>
+    <div id="quizOptions"></div><div id="quizFeedback" class="feedback hidden" aria-live="polite"></div><div class="btnrow"><button class="btn" id="checkQuiz">Comprobar respuesta</button><button class="btn secondary hidden" id="nextQuiz">Otro ejercicio</button></div>
+  </section>
+  <section class="card hidden" id="roleplayView">
+    <div class="eyebrow">SIMULADOR DE CONVERSACIÓN</div><h2 style="margin:5px 0">Tu turno para responder</h2>
+    <div class="scenario"><p class="muted">Situación</p><p id="roleSituation">Un cliente contacta porque su pedido llegó tarde y exige una solución inmediata.</p><p class="muted">El cliente dice:</p><p class="english" id="rolePrompt">“I've been waiting for my order for a week. This is unacceptable!”</p><button class="btn secondary smallbtn" id="speakPrompt">🔊 Escuchar al cliente</button></div>
+    <label for="userAnswer"><strong>Escribí tu respuesta en inglés</strong></label><textarea id="userAnswer" class="field" placeholder="I understand how frustrating this must be..."></textarea>
+    <div class="btnrow"><button class="btn" id="analyzeAnswer">Revisar mi respuesta</button><button class="btn secondary" id="voiceInput">🎙️ Dictar respuesta</button></div>
+    <div id="answerFeedback" class="feedback hidden" aria-live="polite"></div>
+    <div class="notice">La revisión inicial usa una guía local de expresiones y una respuesta modelo; no es una evaluación automática completa de gramática ni de pronunciación. Para una corrección más profunda, podés copiar tu respuesta en ChatGPT.</div>
+    <div class="scenario"><div class="eyebrow">Respuesta modelo</div><p id="modelAnswer">“I'm sorry your order hasn't arrived yet. I understand how frustrating this is. Let me check the tracking information and see what options are available.”</p><button class="btn secondary smallbtn" id="speakModel">🔊 Escuchar modelo</button><button class="btn ghost smallbtn" id="copyModel">Copiar modelo</button></div>
+  </section>
+  <section class="card hidden" id="progressView">
+    <div class="eyebrow">TU HISTORIAL EN ESTE DISPOSITIVO</div><h2 style="margin:5px 0">Progreso de aprendizaje</h2><p id="progressDetail" class="muted">Todavía no completaste prácticas.</p><div id="progressList"></div><div class="btnrow"><button class="btn ghost" id="resetProgress">Reiniciar progreso</button></div><p class="muted">El progreso se guarda en el almacenamiento local de este navegador. Si borrás los datos del sitio o cambiás de dispositivo, puede perderse.</p>
+  </section>
+  <div class="footer">Versión inicial gratuita · No necesita cuenta · No envía tus respuestas a ningún servidor</div>
+</main>
+<script>
+const lessons={
+ customer:[
+ {title:"Mostrar empatía con un cliente",intro:"Una frase empática reconoce cómo se siente el cliente y prepara el camino para ayudarlo.",phrase:"I completely understand your frustration.",translation:"Entiendo perfectamente tu frustración.",explanation:"“Completely understand” suena natural y profesional. Evitá responder solamente “I understand”, que puede sonar distante en una situación tensa.",alternative:"I can see why this has been frustrating, and I'll do my best to help.",situation:"Un cliente está enfadado por un retraso.",prompt:"I've been waiting for my order for a week. This is unacceptable!",model:"I'm sorry your order hasn't arrived yet. I understand how frustrating this is. Let me check the tracking information and see what options are available."},
+ {title:"Explicar que vas a comprobar algo",intro:"En lugar de dejar al cliente esperando sin contexto, explicá qué vas a revisar.",phrase:"Let me look into this for you.",translation:"Déjame revisar esto por vos.",explanation:"“Look into” significa investigar o comprobar un asunto. Es más natural que traducir literalmente “look at this problem” en muchos contextos de atención al cliente.",alternative:"I'll check the details and get back to you with an update.",situation:"El cliente pregunta por qué se canceló su pedido.",prompt:"Why was my order cancelled? Nobody told me anything.",model:"I'm sorry you weren't informed. Let me look into this for you and check the details of the cancellation."},
+ {title:"Explicar una política con tacto",intro:"Comunicá límites con claridad y ofrecé alternativas cuando sea posible.",phrase:"What I can do for you is...",translation:"Lo que sí puedo hacer por vos es...",explanation:"Esta estructura evita centrarse solamente en lo que no se puede hacer y dirige la conversación hacia una solución.",alternative:"Although I can't offer that option, I can explain the alternatives available.",situation:"El cliente pide una excepción a la política de devolución.",prompt:"I don't care about the policy. Just give me a full refund today.",model:"I understand you'd like this resolved today. What I can do for you is review the available options and explain the next steps."}
+ ],
+ quality:[
+ {title:"Dar feedback constructivo",intro:"El feedback profesional se centra en una conducta concreta y en cómo mejorarla.",phrase:"One area for improvement is...",translation:"Un área de mejora es...",explanation:"Es una forma neutral de introducir feedback. Después, describí un comportamiento específico y una acción posible.",alternative:"You did well in building rapport; one area for improvement is verifying the customer's details.",situation:"Estás dando feedback después de revisar una interacción.",prompt:"The agent was friendly, but forgot to verify the customer's details.",model:"You built rapport well. One area for improvement is verifying the customer's details before discussing the order."},
+ {title:"Hablar de indicadores",intro:"Usá expresiones claras para explicar resultados y tendencias.",phrase:"We need to improve our first contact resolution.",translation:"Necesitamos mejorar la resolución en el primer contacto.",explanation:"“First contact resolution” suele abreviarse FCR. Para hablar de una tendencia, podés usar “has increased”, “has decreased” o “remains stable”.",alternative:"Our CSAT has improved, but we still need to focus on first contact resolution.",situation:"En una reunión revisan los indicadores del equipo.",prompt:"Our CSAT is improving, but customers still need to contact us more than once.",model:"Our CSAT has improved, but we still need to focus on first contact resolution to reduce repeat contacts."},
+ {title:"Explicar un error de calidad",intro:"Describí el comportamiento observado sin atacar a la persona.",phrase:"The interaction did not meet the quality standard for...",translation:"La interacción no cumplió el estándar de calidad para...",explanation:"Separá el desempeño de la persona. Indicá el criterio, el ejemplo observado y la acción correctiva.",alternative:"The interaction missed the verification step, so let's review the expected process.",situation:"Tenés que explicar un error detectado en una auditoría.",prompt:"The agent skipped an important verification step.",model:"The interaction did not meet the quality standard for verification. Let's review the expected process and how to apply it consistently."}
+ ],
+ leader:[
+ {title:"Ofrecer coaching",intro:"Un buen líder hace preguntas, escucha y acuerda un siguiente paso concreto.",phrase:"What do you think you could do differently next time?",translation:"¿Qué creés que podrías hacer diferente la próxima vez?",explanation:"La pregunta invita a reflexionar en lugar de imponer una respuesta. Es útil en sesiones de coaching.",alternative:"Let's identify one action you can try in your next interaction.",situation:"Un compañero tiene dificultades para gestionar objeciones.",prompt:"I get nervous when customers challenge the policy.",model:"I understand that can be challenging. What do you think you could do differently next time? Let's practise a response together."},
+ {title:"Hablar en una reunión",intro:"Presentá el problema, el impacto y la propuesta de forma ordenada.",phrase:"I'd like to highlight one key issue.",translation:"Me gustaría destacar un punto importante.",explanation:"“I'd like to highlight” es una fórmula profesional para introducir un asunto sin sonar demasiado brusco.",alternative:"I'd like to highlight one key issue and suggest a practical next step.",situation:"Estás compartiendo una actualización con el equipo.",prompt:"The team is missing the target because of long handling times.",model:"I'd like to highlight one key issue: our handling times are above target. I suggest reviewing the main causes and sharing best practices."},
+ {title:"Resolver un desacuerdo",intro:"Reconocé el punto de vista de la otra persona y volvé al objetivo compartido.",phrase:"I see your point. At the same time...",translation:"Entiendo tu punto. Al mismo tiempo...",explanation:"Esta expresión permite discrepar de manera respetuosa. Evitá “You are wrong” en una conversación profesional.",alternative:"I see your point. At the same time, we need to make sure we're following the agreed process.",situation:"Un compañero no está de acuerdo con un procedimiento.",prompt:"I think we should skip that step because it takes too long.",model:"I see your point. At the same time, we need to follow the agreed process. Let's look for a way to make it more efficient."}
+ ],
+ interview:[
+ {title:"Presentarte profesionalmente",intro:"Una buena presentación conecta tu experiencia con el puesto al que aspirás.",phrase:"I have experience in customer service and supporting team performance.",translation:"Tengo experiencia en atención al cliente y en apoyar el rendimiento del equipo.",explanation:"Usá el presente perfecto o “I have experience in…” para resumir experiencia. Añadí un ejemplo concreto para demostrarlo.",alternative:"My experience has helped me develop strong communication and problem-solving skills.",situation:"El entrevistador te pide que hables de vos.",prompt:"Tell me about yourself and your professional background.",model:"I have experience in customer service across calls, chats and emails. I've developed strong communication and problem-solving skills, and I'm interested in growing in quality and team support."},
+ {title:"Explicar un área de mejora",intro:"Elegí un aspecto real y explicá qué hacés para mejorarlo.",phrase:"I'm working on becoming more confident when speaking English.",translation:"Estoy trabajando para tener más confianza al hablar inglés.",explanation:"La estructura “I'm working on…” demuestra que reconocés el área y estás tomando medidas concretas.",alternative:"I'm improving my spoken English through regular practice and feedback.",situation:"Te preguntan por una habilidad que estás desarrollando.",prompt:"What is one skill you are currently working to improve?",model:"I'm working on becoming more confident when speaking English. I practise regularly and focus on communicating clearly in professional situations."},
+ {title:"Hablar de un logro",intro:"Explicá la situación, qué hiciste y cuál fue el resultado.",phrase:"One achievement I'm proud of is...",translation:"Un logro del que estoy orgulloso es...",explanation:"Después de la frase, contá una situación real y tu contribución. No inventes cifras ni resultados.",alternative:"This experience taught me how important teamwork and consistency are.",situation:"El entrevistador pregunta por un logro laboral.",prompt:"Tell me about a professional achievement you're proud of.",model:"One achievement I'm proud of is consistently supporting team performance while maintaining service quality. It taught me the value of teamwork, organisation and clear communication."}
+ ]
+};
+let currentModule='customer', currentLesson=0, currentTab='lesson', selectedOption=-1, quizChecked=false;
+const totalLessons=Object.values(lessons).reduce((a,b)=>a+b.length,0);
+document.getElementById('totalCount').textContent=totalLessons;
+let completed=loadCompleted();
+function loadCompleted(){try{return JSON.parse(localStorage.getItem('wec_completed')||'[]')}catch(e){return []}}
+function saveCompleted(){try{localStorage.setItem('wec_completed',JSON.stringify(completed))}catch(e){};renderProgress()}
+function lessonKey(){return currentModule+'-'+currentLesson}
+function activeLesson(){return lessons[currentModule][currentLesson]}
+function renderLesson(){
+ const l=activeLesson();document.getElementById('lessonCategory').textContent=({customer:'CUSTOMER SERVICE',quality:'QUALITY & KPIs',leader:'TEAM LEADER',interview:'JOB INTERVIEWS'}[currentModule])+' · B1';
+ ['lessonTitle','lessonIntro','phrase','translation','explanation','alternative'].forEach((id,i)=>document.getElementById(id).textContent=[l.title,l.intro,l.phrase,l.translation,l.explanation,l.alternative][i]);
+ document.getElementById('roleSituation').textContent=l.situation;document.getElementById('rolePrompt').textContent='"'+l.prompt+'"';document.getElementById('modelAnswer').textContent='"'+l.model+'"';
+ document.getElementById('markLesson').textContent=completed.includes(lessonKey())?'Lección completada ✓':'Marcar lección como completada ✓';
+ document.querySelectorAll('.module').forEach(b=>b.classList.toggle('active',b.dataset.module===currentModule));
+}
+function renderProgress(){
+ const n=completed.length,p=Math.round(n/totalLessons*100);document.getElementById('doneCount').textContent=n;document.getElementById('progressBar').style.width=p+'%';
+ document.getElementById('streakLabel').textContent=n===0?'Primer día':n===totalLessons?'¡Completado!':'¡Buen trabajo!';
+ document.getElementById('progressHint').textContent=n===0?'Completá una práctica para empezar a registrar tu progreso en este dispositivo.':`Completaste ${p}% de las prácticas disponibles. Seguí con sesiones cortas y constantes.`;
+ document.getElementById('progressDetail').textContent=n?`Completaste ${n} de ${totalLessons} lecciones (${p}%).`:'Todavía no completaste prácticas.';
+ const list=document.getElementById('progressList');list.innerHTML='';
+ Object.entries(lessons).forEach(([mod,arr])=>{const names={customer:'Customer Service',quality:'Quality & KPIs',leader:'Team Leader',interview:'Job Interviews'};const done=arr.filter((_,i)=>completed.includes(mod+'-'+i)).length;const d=document.createElement('div');d.className='scenario';d.innerHTML=`<strong>${names[mod]}</strong><p class="muted">${done} de ${arr.length} lecciones completadas</p><div class="bar"><span style="width:${done/arr.length*100}%"></span></div>`;list.appendChild(d)});
+}
+function showTab(tab){currentTab=tab;['lesson','quiz','roleplay','progress'].forEach(t=>document.getElementById(t+'View').classList.toggle('hidden',t!==tab));document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));if(tab==='quiz')renderQuiz()}
+document.querySelectorAll('.module').forEach(b=>b.addEventListener('click',()=>{currentModule=b.dataset.module;currentLesson=0;renderLesson();showTab('lesson')}));
+document.querySelectorAll('.navbtn').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+document.getElementById('markLesson').addEventListener('click',()=>{if(!completed.includes(lessonKey()))completed.push(lessonKey());saveCompleted();renderLesson()});
+document.getElementById('nextLesson').addEventListener('click',()=>{currentLesson=(currentLesson+1)%lessons[currentModule].length;renderLesson()});
+function speak(text){if(!('speechSynthesis'in window)){alert('La lectura en voz alta no está disponible en este navegador.');return}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-GB';u.rate=.88;window.speechSynthesis.speak(u)}
+document.getElementById('speakPhrase').addEventListener('click',()=>speak(activeLesson().phrase));
+document.getElementById('speakPrompt').addEventListener('click',()=>speak(activeLesson().prompt));
+document.getElementById('speakModel').addEventListener('click',()=>speak(activeLesson().model));
+document.getElementById('copyModel').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(activeLesson().model);document.getElementById('copyModel').textContent='Copiado ✓'}catch(e){alert('Seleccioná y copiá manualmente la respuesta modelo.')}});
+const quizzes=[
+{q:'Un cliente está enfadado por un retraso. ¿Qué respuesta suena más profesional?',opts:['Calm down. It is not my fault.','I understand how frustrating this is. Let me check what happened.','You need to wait.'],correct:1,why:'Reconocés la frustración y explicás el siguiente paso sin culpar al cliente.'},
+{q:'¿Qué frase introduce feedback constructivo?',opts:['You are bad at this.','One area for improvement is verifying the customer’s details.','You always make mistakes.'],correct:1,why:'Se centra en una conducta concreta y en una oportunidad de mejora, no en atacar a la persona.'},
+{q:'En una reunión, ¿cómo expresás un desacuerdo respetuoso?',opts:['You are completely wrong.','That makes no sense.','I see your point. At the same time, we need to follow the process.'],correct:2,why:'Reconocés la perspectiva de la otra persona y volvés al procedimiento compartido.'},
+{q:'En una entrevista, ¿qué respuesta es más sólida?',opts:['I am perfect at everything.','I am improving my spoken English through regular practice.','My English is bad.'],correct:1,why:'Es honesta, concreta y demuestra que estás tomando medidas para mejorar.'}
+];let quizIndex=0;
+function renderQuiz(){selectedOption=-1;quizChecked=false;document.getElementById('quizFeedback').classList.add('hidden');document.getElementById('nextQuiz').classList.add('hidden');document.getElementById('checkQuiz').classList.remove('hidden');const q=quizzes[quizIndex%quizzes.length];document.getElementById('quizQuestion').textContent=q.q;const el=document.getElementById('quizOptions');el.innerHTML='';q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='quiz-option';b.textContent=o;b.addEventListener('click',()=>{if(quizChecked)return;selectedOption=i;document.querySelectorAll('.quiz-option').forEach((x,j)=>x.classList.toggle('selected',j===i))});el.appendChild(b)})}
+document.getElementById('checkQuiz').addEventListener('click',()=>{if(selectedOption<0){alert('Elegí una respuesta primero.');return}quizChecked=true;const q=quizzes[quizIndex%quizzes.length];document.querySelectorAll('.quiz-option').forEach((b,i)=>{if(i===q.correct)b.classList.add('correct');else if(i===selectedOption)b.classList.add('wrong')});const f=document.getElementById('quizFeedback');f.classList.remove('hidden');f.innerHTML=`<h3>${selectedOption===q.correct?'¡Correcto!':'Vamos a mejorarlo'}</h3><p>${q.why}</p>`;document.getElementById('nextQuiz').classList.remove('hidden');document.getElementById('checkQuiz').classList.add('hidden');if(selectedOption===q.correct){const k='quiz-'+quizIndex;if(!completed.includes(k))completed.push(k);saveCompleted()}});
+document.getElementById('nextQuiz').addEventListener('click',()=>{quizIndex=(quizIndex+1)%quizzes.length;renderQuiz()});
+function analyze(){
+ const answer=document.getElementById('userAnswer').value.trim();if(!answer){alert('Escribí o dictá una respuesta primero.');return}
+ const l=activeLesson(), low=answer.toLowerCase();let positives=[],improvements=[];
+ if(/\b(i understand|i can see|i appreciate|i'm sorry|i am sorry|i apologize|i apologise)\b/.test(low))positives.push('Incluís empatía o reconocimiento de la situación.');
+ else improvements.push('Añadí una frase de empatía, por ejemplo: “I understand how frustrating this is.”');
+ if(/\b(let me|i will|i.ll|i can|i can help|i'll check|i will check|next step|what i can do)\b/.test(low))positives.push('Indicás una acción o un siguiente paso.');
+ else improvements.push('Explicá qué vas a hacer: “Let me check the details and see what options are available.”');
+ if(answer.split(/\s+/).length<9)improvements.push('Tu respuesta es bastante breve. Intentá añadir empatía, una acción concreta y el siguiente paso.');
+ if(/\b(gonna|wanna|ain't|u|ur)\b/.test(low))improvements.push('Evitá abreviaciones demasiado informales en una interacción profesional.');
+ if(!/[.!?]$/.test(answer))improvements.push('Terminá la frase con puntuación para que tu respuesta escrita sea más clara.');
+ if(!positives.length)positives.push('Ya diste el primer paso: intentaste responder en inglés. Ahora compará tu respuesta con el modelo.');
+ const box=document.getElementById('answerFeedback');box.classList.remove('hidden');box.innerHTML='<h3>Tu revisión</h3>'+positives.map(x=>'<p>✓ '+x+'</p>').join('')+(improvements.length?'<div class="line"></div><strong>Qué podés mejorar</strong>'+improvements.map(x=>'<p>• '+x+'</p>').join(''):'<p>Tu respuesta incluye los elementos principales de una respuesta profesional.</p>')+`<div class="line"></div><strong>Una alternativa modelo</strong><p class="answer">${l.model}</p><p class="muted">Consejo: compará si tu respuesta reconoce el problema, propone una acción y mantiene un tono profesional. Esta revisión es orientativa, no una nota objetiva de nivel.</p>`;
+ if(!completed.includes(lessonKey())){completed.push(lessonKey());saveCompleted()}
+}
+document.getElementById('analyzeAnswer').addEventListener('click',analyze);
+document.getElementById('voiceInput').addEventListener('click',()=>{
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){alert('El dictado directo no está disponible en este navegador. Podés usar el micrófono del teclado del iPhone para dictar en el cuadro de texto.');return}
+ const rec=new SR();rec.lang='en-GB';rec.interimResults=false;rec.maxAlternatives=1;
+ document.getElementById('voiceInput').textContent='🎙️ Escuchando…';
+ rec.onresult=e=>{const t=e.results[0][0].transcript;const a=document.getElementById('userAnswer');a.value+=(a.value?' ':'')+t};
+ rec.onerror=()=>alert('No se pudo iniciar el dictado. Revisá los permisos del micrófono o usá el micrófono del teclado.');
+ rec.onend=()=>document.getElementById('voiceInput').textContent='🎙️ Dictar respuesta';
+ try{rec.start()}catch(e){alert('El dictado no pudo iniciarse. Probá con el micrófono del teclado del iPhone.');document.getElementById('voiceInput').textContent='🎙️ Dictar respuesta'}
+});
+document.getElementById('resetProgress').addEventListener('click',()=>{if(confirm('¿Querés borrar todo el progreso guardado en este navegador?')){completed=[];saveCompleted();renderLesson()}});
+renderLesson();renderProgress();
+</script>
+</body></html>
